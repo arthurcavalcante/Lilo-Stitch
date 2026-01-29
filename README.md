@@ -29,10 +29,7 @@ O site utiliza a temática de **Lilo & Stitch** para apresentar diferentes eleme
 
 ## 📸 Demonstração
 
-> [!TIP]
-> **Dica:** Adicione um screenshot do seu site aqui para que as pessoas vejam o resultado visual imediatamente!
-
-[Substitua este texto pelo link da sua imagem ou use: ![Screenshot do Projeto](./screenshot.png)]
+<img width="1892" height="797" alt="image" src="https://github.com/user-attachments/assets/913642d0-61bd-4046-a1e8-6c94441784f5" />
 
 ---
 
@@ -45,7 +42,7 @@ O site utiliza a temática de **Lilo & Stitch** para apresentar diferentes eleme
 
 ---
 
-## 🏁 Como Rodar o Projeto
+## Como eu uso o Bootstrap?
 
 Para visualizar o site localmente, você não precisa de compiladores, apenas de um navegador:
 
