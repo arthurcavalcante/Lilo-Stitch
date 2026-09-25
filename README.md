@@ -9,7 +9,7 @@
 
 ### 🌴 Uma interface inspirada em *Lilo & Stitch* desenvolvida para explorar o poder do Bootstrap.
 
-> **"Ohana quer dizer família. Família quer dizer nunca abandonar ou esquecer."**
+> **"Ohana quer dizer família. Família quer dizer nunca abandonar ou esquecer!"**
 
 </div>
 
