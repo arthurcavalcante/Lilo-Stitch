@@ -1,27 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <title>Lilo & Stitch (2002)</title>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Lilo & Stitch (2002) — Bootstrap Showcase</title>
+
+    <!-- SEO & Metadados -->
+    <meta name="description" content="Página temática e interativa dedicada ao clássico Lilo & Stitch (2002) da Disney. Conheça a história, personagens, elenco e trilha sonora." />
+    <meta name="keywords" content="Lilo e Stitch, Disney, Ohana, Experimento 626, Trilha Sonora, Bootstrap 5" />
+    <meta name="author" content="Arthur Neves" />
+
+    <!-- Open Graph / Redes Sociais -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Lilo & Stitch (2002) — Showcase & Fan Page" />
+    <meta property="og:description" content="Explore o significado de Ohana com uma experiência imersiva: personagens, curiosidades e trilha sonora." />
+    <meta property="og:image" content="CSS/Imagens/lilo-stitch-banner.jpg" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="CSS/Imagens/stitch-logo.jpg" />
+
+    <!-- Bootstrap 5.3 & Ícones -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS Personalizado -->
     <link rel="stylesheet" href="CSS/site_principal_style.css">
 </head>
 <body>
 
+    <!-- Cabeçalho & Navbar -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow bg-white">
-            <div class="container-fluid">
-                <a class="navbar-brand d-flex align-items-center" href="#">
-                    <img src="CSS/Imagens/stitch-logo.jpg" alt="Lilo & Stitch Logo" class="me-2" style="height:48px;width:auto;">
+        <nav class="navbar navbar-expand-lg fixed-top shadow-sm" aria-label="Navegação principal">
+            <div class="container-fluid px-3 px-md-4">
+                <a class="navbar-brand d-flex align-items-center" href="#inicio" title="Ir para o início">
+                    <img src="CSS/Imagens/stitch-logo.jpg" alt="Logo Lilo & Stitch" class="me-2 rounded-circle" width="44" height="44">
+                    <span class="fw-bold brand-text">Lilo &amp; Stitch</span>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuHamburguer" aria-controls="menuHamburguer" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#menuHamburguer" aria-controls="menuHamburguer" aria-expanded="false" aria-label="Alternar navegação">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="menuHamburguer">
-                    <ul class="navbar-nav ms-auto mb-lg-0">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#inicio">Home</a>
                         </li>
@@ -35,16 +60,23 @@
                             <a class="nav-link" href="#elenco">Elenco</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#accordionExample">Trilha Sonora</a>
+                            <a class="nav-link" href="#trilha-sonora">Trilha Sonora</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#galeria">Galeria</a>
                         </li>
+                        <li class="nav-item">
+                            <button type="button" class="btn btn-sm btn-outline-primary ms-lg-2 my-2 my-lg-0 px-3" data-bs-toggle="offcanvas" data-bs-target="#contatoOffcanvas" aria-controls="contatoOffcanvas">
+                                <i class="bi bi-envelope-fill me-1" aria-hidden="true"></i> Fale Conosco
+                            </button>
+                        </li>
                     </ul>
-                    <div class="d-flex align-items-center ms-3">
-                        <div class="form-check form-switch mb-0">
-                            <input class="form-check-input" type="checkbox" id="modo-noturno" aria-label="Alternar modo escuro">
-                            <label class="form-check-label small ms-2" for="modo-noturno">Dark</label>
+                    <div class="d-flex align-items-center ms-lg-3 py-2 py-lg-0 theme-toggle-wrapper">
+                        <div class="form-check form-switch mb-0 d-flex align-items-center">
+                            <input class="form-check-input" type="checkbox" id="modo-noturno" role="switch" aria-label="Alternar modo escuro">
+                            <label class="form-check-label small ms-2 fw-semibold" for="modo-noturno">
+                                <i class="bi bi-moon-stars-fill theme-icon me-1" aria-hidden="true"></i><span class="theme-label-text">Dark</span>
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -52,288 +84,481 @@
         </nav>
     </header>
 
-    <main>
-        <section id="inicio" class="container-fluid pt-5 text-center">
-            <div id="banner-css-container" class="w-100 rounded-3 shadow mt-5" aria-label="Banner Lilo & Stitch"></div>
-            <div class="row m-1 p-3 mt-3 border rounded-4">
+    <main id="conteudo-principal">
+        <!-- Início / Hero -->
+        <section id="inicio" class="container-fluid pt-4 text-center">
+            <div id="banner-css-container" class="w-100 rounded-4 shadow-sm mt-3" aria-label="Banner ilustrativo de Lilo & Stitch">
+                <div class="banner-overlay-content p-4">
+                    <span class="badge bg-primary-subtle text-primary fw-semibold mb-2 px-3 py-2 rounded-pill shadow-sm">Clássico da Disney de 2002</span>
+                    <h1 class="display-5 fw-bold text-white mb-2">Bem-vindos ao Mundo de Lilo &amp; Stitch!</h1>
+                    <p class="lead text-white-50 mx-auto" style="max-width: 720px;">
+                        "Ohana quer dizer família. Família quer dizer nunca abandonar ou esquecer."
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row m-1 p-3 p-md-4 mt-3 border rounded-4 section-card">
                 <div class="col-12">
-                    <h1 class="display-4">Bem-vindos ao Mundo de Lilo & Stitch!</h1>
-                    <p class="lead">
-                        Explore a magia, a aventura e o significado de 'Ohana' nesta página dedicada ao amado filme de 2002 da Disney.
-                        Navegue pelas seções para descobrir mais sobre a história, personagens cativantes, curiosidades e a trilha sonora inesquecível.
+                    <h2 class="h3 fw-bold mb-3">Aventuras Tropicais e Laços Inquebráveis</h2>
+                    <p class="lead mb-0 text-muted-custom">
+                        Explore a magia, a aventura e o verdadeiro significado de 'Ohana' nesta página dedicada ao aclamado filme de 2002 da Disney.
+                        Navegue pelas seções para descobrir mais sobre a história, personagens cativantes, curiosidades exclusivas e a trilha sonora inesquecível de Elvis Presley e cantos havaianos.
                     </p>
                 </div>
             </div>
         </section>
 
-        <section id="sinopse" class="container-fluid mt-4 pt-5">
-            <div class="row m-1 p-3 border rounded-4">
+        <!-- Sinopse -->
+        <section id="sinopse" class="container-fluid mt-3">
+            <div class="row m-1 p-3 p-md-4 border rounded-4 section-card">
                 <div class="col-12">
-                    <h2>Sinopse</h2>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-book-half fs-3 text-primary me-2" aria-hidden="true"></i>
+                        <h2 class="h3 fw-bold mb-0">Sinopse</h2>
+                    </div>
                     <p>
-                        "Lilo & Stitch" conta a história de Lilo Pelekai, uma solitária garota havaiana que vive com sua irmã mais velha, Nani, após a morte de seus pais. Lilo tem dificuldades em fazer amigos e anseia por companhia. Um dia, ela adota o que acredita ser um cachorro de um abrigo local, a quem ela nomeia Stitch.
+                        <strong>"Lilo &amp; Stitch"</strong> conta a história de Lilo Pelekai, uma solitária garota havaiana que vive com sua irmã mais velha e tutora, Nani, após a trágica perda de seus pais. Lilo enfrenta dificuldades para se enturmar e anseia profundamente por um amigo verdadeiro. Em um dia especial, ela adota em um abrigo de animais o que pensa ser um cãozinho peculiar, dando-lhe o nome de Stitch.
                     </p>
                     <p>
-                        No entanto, Stitch não é um cachorro comum. Ele é, na verdade, o Experimento 626, uma criatura alienígena geneticamente modificada, poderosa e destrutiva, que fugiu de seu planeta natal e caiu acidentalmente na Terra. Perseguido por seu criador, Dr. Jumba Jookiba, e pelo especialista em Terra, Agente Pleakley, Stitch usa Lilo como escudo humano para evitar sua captura.
+                        No entanto, Stitch está longe de ser um animal comum: ele é na verdade o <em>Experimento Genético Ilegal 626</em>, uma criatura alienígena superdotada criada para destruição em massa que escapou da Federação Galáctica e caiu nas ilhas paradisíacas do Havaí. Caçado por seu criador, o excêntrico Dr. Jumba Jookiba, e pelo especialista na Terra, o Agente Pleakley, Stitch usa Lilo como disfarce e escudo para não ser capturado.
                     </p>
                     <p>
-                        Através de suas aventuras e desventuras, Lilo ensina a Stitch sobre lealdade, amor e o conceito de 'Ohana' – a ideia havaiana de que família significa que ninguém é deixado para trás ou esquecido. Gradualmente, o inicialmente caótico Stitch começa a desenvolver um senso de pertencimento e afeição por Lilo e Nani, transformando sua programação destrutiva em um desejo de proteger sua nova família.
+                        Ao longo de confusões hilárias e momentos emocionantes, Lilo apresenta Stitch ao calor havaiano e à filosofia de <strong>'Ohana'</strong> — o princípio sagrado de que ninguém deve ser deixado para trás ou esquecido. Conforme vivenciam o significado de acolhimento, Stitch redefine seu próprio propósito, escolhendo o amor e a lealdade para proteger sua nova família terrestre.
                     </p>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <strong>Curiosidades do filme</strong>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <section id="personagens" class="container-fluid mt-4 pt-5">
-            <div class="row m-1 p-3 border rounded-4">
-                <div class="col-12">
-                    <h2>Personagens Principais</h2>
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2">
-                    <div class="col d-flex">
-                        <div class="card shadow-sm">
-                            <img src="CSS/Imagens/lilo.jpg" class="card-img-top" alt="Lilo Pelekai">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">Lilo Pelekai</h5>
-                                <p class="card-text">Uma jovem havaiana excêntrica e solitária que adora Elvis Presley e acredita no poder da 'Ohana', Familia.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col d-flex">
-                        <div class="card shadow-sm">
-                            <img src="CSS/Imagens/stitch.png" class="card-img-top" alt="Stitch (Experimento 626)">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">Stitch</h5>
-                                <p class="card-text">Um experimento genético de número 626, pequeno, mas incrivelmente forte e inicialmente programado para destruir.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col d-flex">
-                        <div class="card shadow-sm">
-                            <img src="CSS/Imagens/nani.jpg" class="card-img-top" alt="Nani Pelekai">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">Nani Pelekai</h5>
-                                <p class="card-text">A irmã mais velha e guardiã legal de Lilo, que luta para manter sua família unida.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col d-flex">
-                        <div class="card shadow-sm">
-                            <img src="CSS/Imagens/jumba.jpg" class="card-img-top" alt="Dr. Jumba Jookiba">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">Dr. Jumba Jookiba</h5>
-                                <p class="card-text">Um "gênio do mal" alienígena e criador de Stitch, enviado à Terra para recapturá-lo.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col d-flex">
-                        <div class="card shadow-sm">
-                            <img src="CSS/Imagens/peakley.jpg" class="card-img-top" alt="Agente Pleakley">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">Agente Wendy Pleakley</h5>
-                                <p class="card-text">Um agente alienígena especialista na Terra (embora seu conhecimento seja questionável), parceiro de Jumba.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col d-flex">
-                        <div class="card shadow-sm">
-                            <img src="CSS/Imagens/cobra.jpg" class="card-img-top" alt="Cobra Bubbles">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">Cobra Bubbles</h5>
-                                <p class="card-text">Um assistente social sério e intimidador que monitora a situação de Nani e Lilo.</p>
-                            </div>
-                        </div>
+                    <div class="mt-4">
+                        <button type="button" class="btn btn-primary d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#modalCuriosidades">
+                            <i class="bi bi-stars me-2" aria-hidden="true"></i>
+                            <span>Curiosidades dos Bastidores</span>
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="elenco" class="container-fluid mt-4 pt-5">
-            <div class="row m-1 p-3 border rounded-4">
+        <!-- Personagens -->
+        <section id="personagens" class="container-fluid mt-3">
+            <div class="row m-1 p-3 p-md-4 border rounded-4 section-card">
                 <div class="col-12">
-                    <h2>Elenco (Vozes Originais Em inglês)</h2>
-                    <ul class="list-group">
-                        <li class="list-group-item"><strong>Daveigh Chase</strong> como Lilo Pelekai</li>
-                        <li class="list-group-item"><strong>Chris Sanders</strong> como Stitch</li>
-                        <li class="list-group-item"><strong>Tia Carrere</strong> como Nani Pelekai</li>
-                        <li class="list-group-item"><strong>David Ogden Stiers</strong> como Dr. Jumba Jookiba</li>
-                        <li class="list-group-item"><strong>Kevin McDonald</strong> como Agente Pleakley</li>
-                        <li class="list-group-item"><strong>Ving Rhames</strong> como Cobra Bubbles</li>
-                        <li class="list-group-item"><strong>Zoe Caldwell</strong> como Grande Conselheira</li>
-                        <li class="list-group-item"><strong>Jason Scott Lee</strong> como David Kawena</li>
-                        <li class="list-group-item"><strong>Kevin Michael Richardson</strong> como Capitão Gantu</li>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-people-fill fs-3 text-primary me-2" aria-hidden="true"></i>
+                        <h2 class="h3 fw-bold mb-0">Personagens Principais</h2>
+                    </div>
+                    <p class="text-muted-custom mb-4">Conheça as personalidades marcantes que dão vida a esta inesquecível história:</p>
+                    
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        <!-- Card 1 -->
+                        <div class="col d-flex">
+                            <div class="card shadow-sm w-100 h-100">
+                                <img src="CSS/Imagens/lilo.jpg" class="card-img-top" alt="Lilo Pelekai sorrindo" loading="lazy">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Lilo Pelekai</h5>
+                                    <p class="card-text">Uma garotinha havaiana de espírito livre, excêntrica e cheia de imaginação, apaixonada por fotografar turistas e ouvir os clássicos de Elvis Presley.</p>
+                                    <span class="badge bg-danger-subtle text-danger align-self-start mt-auto">Protagonista</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="col d-flex">
+                            <div class="card shadow-sm w-100 h-100">
+                                <img src="CSS/Imagens/stitch.png" class="card-img-top" alt="Stitch (Experimento 626)" loading="lazy">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Stitch (Experimento 626)</h5>
+                                    <p class="card-text">Uma criatura geneticamente modificada à prova de fogo, balas e que pensa mais rápido que um supercomputador, mas descobre seu coração no Havaí.</p>
+                                    <span class="badge bg-primary-subtle text-primary align-self-start mt-auto">Experimento 626</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="col d-flex">
+                            <div class="card shadow-sm w-100 h-100">
+                                <img src="CSS/Imagens/nani.jpg" class="card-img-top" alt="Nani Pelekai" loading="lazy">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Nani Pelekai</h5>
+                                    <p class="card-text">Irmã mais velha e tutora resiliente de Lilo, que batalha dia após dia contra pressões sociais e financeiras para manter a custódia da irmã.</p>
+                                    <span class="badge bg-warning-subtle text-warning-emphasis align-self-start mt-auto">Guardiã Legal</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="col d-flex">
+                            <div class="card shadow-sm w-100 h-100">
+                                <img src="CSS/Imagens/jumba.jpg" class="card-img-top" alt="Dr. Jumba Jookiba" loading="lazy">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Dr. Jumba Jookiba</h5>
+                                    <p class="card-text">Cientista alienígena autoproclamado "gênio do mal" do planeta Kweltikwan, criador biológico de Stitch e mestre em engenharia genética.</p>
+                                    <span class="badge bg-secondary-subtle text-secondary align-self-start mt-auto">Cientista Genial</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div class="col d-flex">
+                            <div class="card shadow-sm w-100 h-100">
+                                <img src="CSS/Imagens/peakley.jpg" class="card-img-top" alt="Agente Pleakley" loading="lazy">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Agente Wendy Pleakley</h5>
+                                    <p class="card-text">O oficial monocular e extravagante da Aliança Galáctica, enviado para garantir que o planeta Terra (e seus mosquitos preciosos) permaneça a salvo.</p>
+                                    <span class="badge bg-info-subtle text-info-emphasis align-self-start mt-auto">Especialista na Terra</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div class="col d-flex">
+                            <div class="card shadow-sm w-100 h-100">
+                                <img src="CSS/Imagens/cobra.jpg" class="card-img-top" alt="Cobra Bubbles" loading="lazy">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="card-title">Cobra Bubbles</h5>
+                                    <p class="card-text">Um assistente social enigmático e imponente com passado na CIA, com postura rígida mas genuíno zelo pelo bem-estar e segurança de Lilo.</p>
+                                    <span class="badge bg-dark-subtle text-dark-emphasis align-self-start mt-auto">Assistente Social</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Elenco de Vozes -->
+        <section id="elenco" class="container-fluid mt-3">
+            <div class="row m-1 p-3 p-md-4 border rounded-4 section-card">
+                <div class="col-12">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-mic-fill fs-3 text-primary me-2" aria-hidden="true"></i>
+                        <h2 class="h3 fw-bold mb-0">Elenco Principal (Vozes Originais)</h2>
+                    </div>
+                    <p class="text-muted-custom mb-3">Os talentos lendários por trás das vozes originais da animação clássica:</p>
+                    <ul class="list-group list-group-flush rounded-3 border">
+                        <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                            <span><strong>Daveigh Chase</strong></span>
+                            <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2">Lilo Pelekai</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                            <span><strong>Chris Sanders</strong></span>
+                            <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2">Stitch (Experimento 626)</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                            <span><strong>Tia Carrere</strong></span>
+                            <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2">Nani Pelekai</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                            <span><strong>David Ogden Stiers</strong></span>
+                            <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2">Dr. Jumba Jookiba</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                            <span><strong>Kevin McDonald</strong></span>
+                            <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2">Agente Pleakley</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                            <span><strong>Ving Rhames</strong></span>
+                            <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2">Cobra Bubbles</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                            <span><strong>Zoe Caldwell</strong></span>
+                            <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2">Grande Conselheira Galáctica</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                            <span><strong>Jason Scott Lee</strong></span>
+                            <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2">David Kawena</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                            <span><strong>Kevin Michael Richardson</strong></span>
+                            <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2">Capitão Gantu</span>
+                        </li>
                     </ul>
                 </div>
             </div>
         </section>
-  
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-             <div class="modal-content">
-              <div class="modal-header">
-               <h1 class="modal-title fs-5" id="exampleModalLabel">Curiosidades do filme</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-               </div>
-              <div class="modal-body">
-                <ul>
-                    <li>O diretor e roteirista Chris Sanders também é a voz original de Stitch.</li>
-                    <li>O filme é notável por usar aquarelas pintadas à mão para os fundos, uma técnica raramente usada na animação da Disney na época.</li>
-                    <li>A trilha sonora apresenta várias canções de Elvis Presley, que é o ídolo de Lilo.</li>
-                    <li>O conceito de "Ohana" (família) é central para o filme e se tornou uma de suas mensagens mais duradouras.</li>
-                    <li>Originalmente, uma cena climática envolvia Stitch pilotando um Boeing 747 por entre prédios em Honolulu. Após os ataques de 11 de setembro de 2001, a cena foi alterada para Stitch pilotando a nave espacial de Jumba através de montanhas.</li>
-                    <li>Stitch foi inicialmente concebido para um livro infantil que Chris Sanders não conseguiu publicar.</li>
-                    <li>O nome completo de Stitch é "Experimento Genético Ilegal 626".</li>
-                </ul>
-              </div>
-               <div class="modal-footer">
-              </div>
-             </div>
-         </div>
-         </div>
-        <div class="accordion mt-4 pt-5 container-fluid" id="accordionExample">
-    <div class="accordion-item row m-1 p-2 border rounded-4">
-        <h2 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                <h2>Trilha Sonora</h2>
-            </button>
-        </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                <p><strong>A trilha sonora de "Lilo & Stitch" é uma mistura encantadora de canções havaianas tradicionais, clássicos de Elvis Presley e a música original de Alan Silvestri.</strong></p>
-                
-                <h5>Músicas Notáveis:</h5>
-                
-                <ul class="list-group">
-                    <li class="list-group-item d-flex align-items-center">
-                        <audio controls class="me-3" style="width: 150px; height: 32px;">
-                            <source src="Musicas/He Mele No Lilo.mp3" type="audio/mpeg">
-                        </audio>
-                        <span>"He Mele No Lilo" - Mark Kealiʻi Hoʻomalu & Chorus</span>
-                    </li>
-                    
-                    <li class="list-group-item d-flex align-items-center">
-                        <audio controls class="me-3" style="width: 150px; height: 32px;">
-                            <source src="Musicas/Hawaiian Roller Coaster Ride.mp3" type="audio/mpeg">
-                        </audio>
-                        <span>"Hawaiian Roller Coaster Ride" - Mark Kealiʻi Hoʻomalu</span>
-                    </li>
-                    
-                    <li class="list-group-item d-flex align-items-center">
-                        <audio controls class="me-3" style="width: 150px; height: 32px;">
-                            <source src="Musicas/Elvis Presley - Stuck On You.mp3" type="audio/mpeg">
-                        </audio>
-                        <span>"Stuck on You" - Elvis Presley</span>
-                    </li>
-                    
-                    <li class="list-group-item d-flex align-items-center">
-                        <audio controls class="me-3" style="width: 150px; height: 32px;">
-                            <source src="Musicas/Suspisios minds.mp3" type="audio/mpeg">
-                        </audio>
-                        <span>"Suspicious Minds" - Elvis Presley</span>
-                    </li>
-                    
-                    <li class="list-group-item d-flex align-items-center">
-                        <audio controls class="me-3" style="width: 150px; height: 32px;">
-                            <source src="Musicas/Elvis Presley - Heartbreak Hotel.mp3" type="audio/mpeg">
-                        </audio>
-                        <span>"Heartbreak Hotel" - Elvis Presley</span>
-                    </li>
-                    
-                    <li class="list-group-item d-flex align-items-center">
-                        <audio controls class="me-3" style="width: 150px; height: 32px;">
-                            <source src="Musicas/Elvis Presley - (You're The) Devil in Disguise.mp3" type="audio/mpeg">
-                        </audio>
-                        <span>"Devil in Disguise" - Elvis Presley</span>
-                    </li>
-                    
-                    <li class="list-group-item d-flex align-items-center">
-                        <audio controls class="me-3" style="width: 150px; height: 32px;">
-                            <source src="Musicas/Elvis Presley - Hound Dog.mp3" type="audio/mpeg">
-                        </audio>
-                        <span>"Hound Dog" - Elvis Presley (Stitch)</span>
-                    </li>
-                    
-                    <li class="list-group-item d-flex align-items-center">
-                        <audio controls class="me-3" style="width: 150px; height: 32px;">
-                            <source src="Musicas/Can't Help Falling In Love.mp3" type="audio/mpeg">
-                        </audio>
-                        <span>"Can't Help Falling in Love" - A*Teens</span>
-                    </li>
-                </ul>
 
-                <p class="mt-3">A trilha sonora original foi composta por <strong>Alan Silvestri</strong>, conhecido por seu trabalho em filmes como "De Volta para o Futuro" e "Forrest Gump".</p>  
-            </div>
-        </div>
-    </div>
-</div>
-        <section id="galeria" class="container-fluid mt-4 pt-5">
-            <div class="row m-1 p-3 border rounded-4">
+        <!-- Trilha Sonora -->
+        <section id="trilha-sonora" class="container-fluid mt-3">
+            <div class="row m-1 p-3 p-md-4 border rounded-4 section-card">
                 <div class="col-12">
-                    <h2>Galeria de Imagens</h2>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-music-note-beamed fs-3 text-primary me-2" aria-hidden="true"></i>
+                        <h2 class="h3 fw-bold mb-0">Trilha Sonora Oficial</h2>
+                    </div>
+                    <p class="text-muted-custom">
+                        A trilha de <em>Lilo &amp; Stitch</em> é uma mistura mágica de canções havaianas tradicionais, hinos imortais de Elvis Presley e a trilha orquestral original composta pelo premiado <strong>Alan Silvestri</strong> (<em>De Volta para o Futuro</em>, <em>Forrest Gump</em> e <em>Vingadores</em>).
+                    </p>
+
+                    <div class="accordion mt-3" id="accordionTrilha">
+                        <div class="accordion-item border rounded-3 overflow-hidden">
+                            <h3 class="accordion-header" id="headingTrilha">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTrilha" aria-expanded="true" aria-controls="collapseTrilha">
+                                    <span class="fw-bold fs-5">Músicas em Destaque &amp; Player de Áudio</span>
+                                </button>
+                            </h3>
+                            <div id="collapseTrilha" class="accordion-collapse collapse show" aria-labelledby="headingTrilha" data-bs-parent="#accordionTrilha">
+                                <div class="accordion-body p-3 p-md-4">
+                                    <div class="list-group list-group-flush soundtrack-list">
+                                        
+                                        <div class="list-group-item d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between py-3 gap-2">
+                                            <div class="song-info">
+                                                <i class="bi bi-disc-fill text-primary me-2" aria-hidden="true"></i>
+                                                <strong>He Mele No Lilo</strong>
+                                                <span class="text-muted small d-block d-sm-inline ms-sm-2">— Mark Kealiʻi Hoʻomalu &amp; North Shore Children's Choir</span>
+                                            </div>
+                                            <audio controls preload="none" class="audio-player mt-2 mt-sm-0" aria-label="Tocar He Mele No Lilo">
+                                                <source src="Musicas/He Mele No Lilo.mp3" type="audio/mpeg">
+                                                Seu navegador não suporta áudio HTML5.
+                                            </audio>
+                                        </div>
+
+                                        <div class="list-group-item d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between py-3 gap-2">
+                                            <div class="song-info">
+                                                <i class="bi bi-disc-fill text-primary me-2" aria-hidden="true"></i>
+                                                <strong>Hawaiian Roller Coaster Ride</strong>
+                                                <span class="text-muted small d-block d-sm-inline ms-sm-2">— Mark Kealiʻi Hoʻomalu &amp; Kamehameha Schools</span>
+                                            </div>
+                                            <audio controls preload="none" class="audio-player mt-2 mt-sm-0" aria-label="Tocar Hawaiian Roller Coaster Ride">
+                                                <source src="Musicas/Hawaiian Roller Coaster Ride.mp3" type="audio/mpeg">
+                                                Seu navegador não suporta áudio HTML5.
+                                            </audio>
+                                        </div>
+
+                                        <div class="list-group-item d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between py-3 gap-2">
+                                            <div class="song-info">
+                                                <i class="bi bi-disc-fill text-primary me-2" aria-hidden="true"></i>
+                                                <strong>Stuck on You</strong>
+                                                <span class="text-muted small d-block d-sm-inline ms-sm-2">— Elvis Presley</span>
+                                            </div>
+                                            <audio controls preload="none" class="audio-player mt-2 mt-sm-0" aria-label="Tocar Stuck on You">
+                                                <source src="Musicas/Elvis Presley - Stuck On You.mp3" type="audio/mpeg">
+                                                Seu navegador não suporta áudio HTML5.
+                                            </audio>
+                                        </div>
+
+                                        <div class="list-group-item d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between py-3 gap-2">
+                                            <div class="song-info">
+                                                <i class="bi bi-disc-fill text-primary me-2" aria-hidden="true"></i>
+                                                <strong>Suspicious Minds</strong>
+                                                <span class="text-muted small d-block d-sm-inline ms-sm-2">— Elvis Presley</span>
+                                            </div>
+                                            <audio controls preload="none" class="audio-player mt-2 mt-sm-0" aria-label="Tocar Suspicious Minds">
+                                                <source src="Musicas/Suspisios minds.mp3" type="audio/mpeg">
+                                                Seu navegador não suporta áudio HTML5.
+                                            </audio>
+                                        </div>
+
+                                        <div class="list-group-item d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between py-3 gap-2">
+                                            <div class="song-info">
+                                                <i class="bi bi-disc-fill text-primary me-2" aria-hidden="true"></i>
+                                                <strong>Heartbreak Hotel</strong>
+                                                <span class="text-muted small d-block d-sm-inline ms-sm-2">— Elvis Presley</span>
+                                            </div>
+                                            <audio controls preload="none" class="audio-player mt-2 mt-sm-0" aria-label="Tocar Heartbreak Hotel">
+                                                <source src="Musicas/Elvis Presley - Heartbreak Hotel.mp3" type="audio/mpeg">
+                                                Seu navegador não suporta áudio HTML5.
+                                            </audio>
+                                        </div>
+
+                                        <div class="list-group-item d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between py-3 gap-2">
+                                            <div class="song-info">
+                                                <i class="bi bi-disc-fill text-primary me-2" aria-hidden="true"></i>
+                                                <strong>(You're The) Devil in Disguise</strong>
+                                                <span class="text-muted small d-block d-sm-inline ms-sm-2">— Elvis Presley</span>
+                                            </div>
+                                            <audio controls preload="none" class="audio-player mt-2 mt-sm-0" aria-label="Tocar Devil in Disguise">
+                                                <source src="Musicas/Elvis Presley - (You're The) Devil in Disguise.mp3" type="audio/mpeg">
+                                                Seu navegador não suporta áudio HTML5.
+                                            </audio>
+                                        </div>
+
+                                        <div class="list-group-item d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between py-3 gap-2">
+                                            <div class="song-info">
+                                                <i class="bi bi-disc-fill text-primary me-2" aria-hidden="true"></i>
+                                                <strong>Hound Dog</strong>
+                                                <span class="text-muted small d-block d-sm-inline ms-sm-2">— Elvis Presley</span>
+                                            </div>
+                                            <audio controls preload="none" class="audio-player mt-2 mt-sm-0" aria-label="Tocar Hound Dog">
+                                                <source src="Musicas/Elvis Presley - Hound Dog.mp3" type="audio/mpeg">
+                                                Seu navegador não suporta áudio HTML5.
+                                            </audio>
+                                        </div>
+
+                                        <div class="list-group-item d-flex flex-column flex-sm-row align-items-start align-items-sm-center justify-content-between py-3 gap-2">
+                                            <div class="song-info">
+                                                <i class="bi bi-disc-fill text-primary me-2" aria-hidden="true"></i>
+                                                <strong>Can't Help Falling in Love</strong>
+                                                <span class="text-muted small d-block d-sm-inline ms-sm-2">— A*Teens</span>
+                                            </div>
+                                            <audio controls preload="none" class="audio-player mt-2 mt-sm-0" aria-label="Tocar Can't Help Falling in Love">
+                                                <source src="Musicas/Can't Help Falling In Love.mp3" type="audio/mpeg">
+                                                Seu navegador não suporta áudio HTML5.
+                                            </audio>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <img src="CSS/Imagens/Galeria/patinhos-feios.jpg" class="gallery-img-css card-img-top" alt="Ohana">
-                            <div class="card-body">
-                                <p class="card-text text-center">Stitch com os patinhos!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <img src="CSS/Imagens/Galeria/stitch-surfando.jpg" class="gallery-img-css card-img-top" alt="Stitch surfando">
-                            <div class="card-body">
-                                <p class="card-text text-center">Stitch surfando!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <img src="CSS/Imagens/Galeria/logo-stitch.jpg" class="gallery-img-css card-img-top" alt="Lilo e Stitch">
-                            <div class="card-body">
-                                <p class="card-text text-center">Lilo & Stitch!</p>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
             </div>
         </section>
 
+        <!-- Galeria -->
+        <section id="galeria" class="container-fluid mt-3 mb-4">
+            <div class="row m-1 p-3 p-md-4 border rounded-4 section-card">
+                <div class="col-12">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-images fs-3 text-primary me-2" aria-hidden="true"></i>
+                        <h2 class="h3 fw-bold mb-0">Galeria de Cenas</h2>
+                    </div>
+                    <p class="text-muted-custom mb-4">Momentos tocantes e divertidos que marcaram a história da animação:</p>
+                </div>
+                
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                        <div class="card gallery-card shadow-sm h-100">
+                            <div class="gallery-img-wrapper">
+                                <img src="CSS/Imagens/Galeria/patinhos-feios.jpg" class="gallery-img-css card-img-top" alt="Stitch lendo o livro dos patinhos feios" loading="lazy">
+                            </div>
+                            <div class="card-body text-center">
+                                <h6 class="fw-bold mb-1">Stitch e o Patinho Feio</h6>
+                                <p class="card-text small text-muted">A busca comovente do Experimento 626 por encontrar o seu próprio lar e família.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card gallery-card shadow-sm h-100">
+                            <div class="gallery-img-wrapper">
+                                <img src="CSS/Imagens/Galeria/stitch-surfando.jpg" class="gallery-img-css card-img-top" alt="Stitch surfando nas ondas do Havaí" loading="lazy">
+                            </div>
+                            <div class="card-body text-center">
+                                <h6 class="fw-bold mb-1">Surfando nas Ondas</h6>
+                                <p class="card-text small text-muted">Alegria contagiante ao som de Hawaiian Roller Coaster Ride pelas praias de Kauai.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card gallery-card shadow-sm h-100">
+                            <div class="gallery-img-wrapper">
+                                <img src="CSS/Imagens/Galeria/logo-stitch.jpg" class="gallery-img-css card-img-top" alt="Lilo e Stitch abraçados" loading="lazy">
+                            </div>
+                            <div class="card-body text-center">
+                                <h6 class="fw-bold mb-1">Ohana é Para Sempre</h6>
+                                <p class="card-text small text-muted">O laço inseparável entre uma garota havaiana e seu alienígena de estimação.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="text-center p-3 mt-5 border-top">
-        &copy; Lilo & Stitch Fan Page 2025
-    </footer>
-
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="contatoOffcanvas" aria-labelledby="contatoOffcanvasLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="contatoOffcanvasLabel">Fale Conosco</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <!-- Modal de Curiosidades -->
+    <div class="modal fade" id="modalCuriosidades" tabindex="-1" aria-labelledby="modalCuriosidadesLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content shadow border-0">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5 fw-bold d-flex align-items-center" id="modalCuriosidadesLabel">
+                        <i class="bi bi-lightbulb-fill text-warning me-2" aria-hidden="true"></i> Curiosidades do Filme
+                    </h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar janela"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item border-0 ps-0">
+                            <i class="bi bi-check-circle-fill text-success me-2" aria-hidden="true"></i>
+                            <strong>Voz Autêntica:</strong> O diretor e roteirista Chris Sanders foi também a inconfundível voz original de Stitch.
+                        </li>
+                        <li class="list-group-item border-0 ps-0">
+                            <i class="bi bi-check-circle-fill text-success me-2" aria-hidden="true"></i>
+                            <strong>Técnica Tradicional:</strong> É um dos raros filmes modernos da Disney a usar cenários pintados à mão em aquarela, homenageando técnicas clássicas como as de <em>Dumbo</em> (1941) e <em>Bambi</em> (1942).
+                        </li>
+                        <li class="list-group-item border-0 ps-0">
+                            <i class="bi bi-check-circle-fill text-success me-2" aria-hidden="true"></i>
+                            <strong>Tributo ao Rei do Rock:</strong> O filme contém mais canções originais de Elvis Presley do que alguns dos próprios filmes em que Elvis atuou.
+                        </li>
+                        <li class="list-group-item border-0 ps-0">
+                            <i class="bi bi-check-circle-fill text-success me-2" aria-hidden="true"></i>
+                            <strong>Adaptação Histórica:</strong> A épica perseguição final inicialmente mostrava Stitch pilotando um Boeing 747 comercial no meio de arranha-céus. Após o 11 de setembro de 2001, a cena foi totalmente refeita para a nave espacial de Jumba em desfiladeiros montanhosos.
+                        </li>
+                        <li class="list-group-item border-0 ps-0">
+                            <i class="bi bi-check-circle-fill text-success me-2" aria-hidden="true"></i>
+                            <strong>Origem:</strong> Stitch foi criado originalmente em 1985 para uma proposta de livro infantil que nunca foi publicada.
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
         </div>
-        <div class="offcanvas-body">
-            <p>Esta é uma página de fãs. Para informações oficiais, visite os canais da Disney.</p>
-            <form>
+    </div>
+
+    <!-- Offcanvas de Contato / Fale Conosco -->
+    <div class="offcanvas offcanvas-end shadow" tabindex="-1" id="contatoOffcanvas" aria-labelledby="contatoOffcanvasLabel">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title fw-bold d-flex align-items-center" id="contatoOffcanvasLabel">
+                <i class="bi bi-envelope-paper-heart me-2 text-primary" aria-hidden="true"></i> Fale Conosco
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar painel"></button>
+        </div>
+        <div class="offcanvas-body p-4">
+            <p class="small text-muted mb-4">
+                Esta é uma página de fã sem fins lucrativos. Compartilhe sua mensagem, sugestão ou elogio!
+            </p>
+            <form id="formContato" novalidate>
                 <div class="mb-3">
-                    <label for="contactName" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="contactName">
+                    <label for="contactName" class="form-label small fw-semibold">Seu Nome <span class="text-danger">*</span></label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-person" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" id="contactName" required minlength="2" maxlength="80" placeholder="Ex: Arthur Neves">
+                        <div class="invalid-feedback">Por favor, informe seu nome (mínimo 2 caracteres).</div>
+                    </div>
                 </div>
                 <div class="mb-3">
-                    <label for="contactEmail" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="contactEmail">
+                    <label for="contactEmail" class="form-label small fw-semibold">Seu E-mail <span class="text-danger">*</span></label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-at" aria-hidden="true"></i></span>
+                        <input type="email" class="form-control" id="contactEmail" required maxlength="120" placeholder="nome@exemplo.com">
+                        <div class="invalid-feedback">Por favor, informe um endereço de e-mail válido.</div>
+                    </div>
                 </div>
                 <div class="mb-3">
-                    <label for="contactMessage" class="form-label">Mensagem</label>
-                    <textarea class="form-control" id="contactMessage" rows="3"></textarea>
+                    <label for="contactMessage" class="form-label small fw-semibold">Mensagem <span class="text-danger">*</span></label>
+                    <textarea class="form-control" id="contactMessage" rows="4" required minlength="10" maxlength="800" placeholder="Escreva sua mensagem aqui..."></textarea>
+                    <div class="invalid-feedback">Por favor, escreva uma mensagem com pelo menos 10 caracteres.</div>
                 </div>
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-primary d-flex align-items-center justify-content-center">
+                        <i class="bi bi-send-fill me-2" aria-hidden="true"></i> Enviar Mensagem
+                    </button>
+                </div>
+                <div id="formFeedback" class="mt-3" aria-live="polite"></div>
             </form>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <!-- Rodapé -->
+    <footer class="mt-5 border-top py-4">
+        <div class="container text-center">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-md-start mb-2 mb-md-0">
+                    <span class="fw-semibold">&copy; <span id="ano-atual">2025</span> Lilo &amp; Stitch Fan Showcase</span>
+                    <p class="small text-muted mb-0">Projeto educacional desenvolvido com Bootstrap 5 e carinho.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <button type="button" class="btn btn-outline-primary btn-sm me-2" data-bs-toggle="offcanvas" data-bs-target="#contatoOffcanvas">
+                        <i class="bi bi-chat-heart me-1" aria-hidden="true"></i> Contato
+                    </button>
+                    <a href="#inicio" class="btn btn-outline-secondary btn-sm" title="Voltar ao início da página">
+                        <i class="bi bi-arrow-up" aria-hidden="true"></i> Topo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 Bundle com Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Script Customizado -->
     <script src="JS/site_principal.js"></script>
 </body>
 </html>

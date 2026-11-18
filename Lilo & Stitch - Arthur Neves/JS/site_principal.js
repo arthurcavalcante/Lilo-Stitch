@@ -1,137 +1,229 @@
+/**
+ * Lilo & Stitch - Interatividade e Comportamentos Front-End
+ * Funcionalidades: Alternância de Tema Claro/Escuro, Scrollspy, Validação de Formulário, UX de Áudio
+ */
+
 document.addEventListener('DOMContentLoaded', function () {
-    // Rotina Para modo noturno
+    'use strict';
+
+    // =========================================================================
+    // 1. Alternância de Modo Claro / Escuro (Dark Mode) com Persistência
+    // =========================================================================
     const inputCheck = document.querySelector("#modo-noturno");
-    const body = document.querySelector("body");
-    // const nav = document.querySelector("nav.navbar"); // Navbar já é selecionada pelo Bootstrap via 'data-bs-theme' no body
+    const htmlElement = document.documentElement;
+    const bodyElement = document.body;
+    const themeLabelText = document.querySelector(".theme-label-text");
+    const themeIcon = document.querySelector(".theme-icon");
 
-    // Função para aplicar o tema salvo no localStorage
-    function aplicarTemaSalvo() {
+    function aplicarTema(tema) {
+        // Bootstrap 5.3 suporta data-bs-theme no <html> ou <body>
+        htmlElement.setAttribute("data-bs-theme", tema);
+        bodyElement.setAttribute("data-bs-theme", tema);
+        localStorage.setItem('theme', tema);
+
+        const isDark = (tema === 'dark');
+        if (inputCheck) {
+            inputCheck.checked = isDark;
+        }
+
+        if (themeLabelText) {
+            themeLabelText.textContent = isDark ? 'Dark' : 'Light';
+        }
+
+        if (themeIcon) {
+            if (isDark) {
+                themeIcon.className = 'bi bi-moon-stars-fill theme-icon me-1 text-warning';
+            } else {
+                themeIcon.className = 'bi bi-sun-fill theme-icon me-1 text-warning';
+            }
+        }
+    }
+
+    function inicializarTema() {
         const temaSalvo = localStorage.getItem('theme');
-        if (temaSalvo) {
-            body.setAttribute("data-bs-theme", temaSalvo);
-            if (inputCheck) {
-                inputCheck.checked = (temaSalvo === 'dark');
-                const label = document.querySelector("label[for='modo-noturno']");
-                if (label) label.textContent = inputCheck.checked ? 'Dark' : 'Light';
-            }
+        if (temaSalvo === 'dark' || temaSalvo === 'light') {
+            aplicarTema(temaSalvo);
         } else {
-            // Define um tema padrão se nada estiver salvo (opcional, Bootstrap cuida disso)
-            // ou verifica a preferência do sistema
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const defaultTheme = prefersDark ? 'dark' : 'light';
-            body.setAttribute("data-bs-theme", defaultTheme);
-             if (inputCheck) {
-                inputCheck.checked = prefersDark;
-                const label = document.querySelector("label[for='modo-noturno']");
-                if (label) label.textContent = inputCheck.checked ? 'Dark' : 'Light';
-            }
+            const prefereDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            aplicarTema(prefereDark ? 'dark' : 'light');
         }
     }
 
-    // Função para mudar o modo e salvar no localStorage
-    function alternarModo() {
-        if (inputCheck && body) {
-            const modo = inputCheck.checked ? 'dark' : 'light';
-            body.setAttribute("data-bs-theme", modo);
-            localStorage.setItem('theme', modo); // Salva a preferência
-            const label = document.querySelector("label[for='modo-noturno']");
-            if (label) label.textContent = inputCheck.checked ? 'Dark' : 'Light';
-
-            // Bootstrap 5.3+ lida com a navbar automaticamente se ela tiver classes como `navbar-light bg-light` ou `navbar-dark bg-dark`
-            // e o `data-bs-theme` for alterado no `<body>` ou em um ancestral da navbar.
-            // O CSS customizado acima já lida com as cores específicas da navbar no modo escuro.
-        }
-    }
-
-    // Aplica o tema salvo ao carregar a página
-    aplicarTemaSalvo();
-
-    // Adiciona o listener para o clique no checkbox
     if (inputCheck) {
-        inputCheck.addEventListener('click', alternarModo);
+        inputCheck.addEventListener('change', function () {
+            const novoTema = this.checked ? 'dark' : 'light';
+            aplicarTema(novoTema);
+        });
     }
 
-    // Script para acionar Popover (se você for usar) - Conforme documentação do Bootstrap
-    // var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-    // var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-    //  return new bootstrap.Popover(popoverTriggerEl)
-    // })
+    // Ouvir mudança nas preferências do sistema operacional
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+        if (!localStorage.getItem('theme')) {
+            aplicarTema(e.matches ? 'dark' : 'light');
+        }
+    });
 
+    inicializarTema();
 
-    // Smooth scroll para links de navegação
+    // =========================================================================
+    // 2. Navegação Suave e Fechamento Automático do Menu Mobile
+    // =========================================================================
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link[href^="#"]');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+    const navbarToggler = document.querySelector('.navbar-toggler');
+
     navLinks.forEach(link => {
         link.addEventListener('click', function (e) {
-            // Remove a classe 'active' de todos os links
-            navLinks.forEach(internalLink => internalLink.classList.remove('active'));
-            // Adiciona 'active' ao link clicado
-            this.classList.add('active');
+            const targetId = this.getAttribute('href');
+            if (!targetId || targetId === '#') return;
 
-            let targetId = this.getAttribute('href');
-            // Se for o link "Home" que aponta para #inicio e não houver #inicio, vá para o topo.
-            if (targetId === '#inicio' && !document.getElementById('inicio')) {
-                targetId = '#'; // Usará o comportamento padrão para # ou rolará para o topo
-            }
-            
             const targetElement = document.querySelector(targetId);
-
             if (targetElement) {
-                e.preventDefault(); // Previne o comportamento padrão apenas se o alvo existir
+                e.preventDefault();
 
-                // Fecha o menu hamburguer se estiver aberto (em telas menores)
-                const navbarToggler = document.querySelector('.navbar-toggler');
-                const navbarCollapse = document.querySelector('.navbar-collapse');
-                if (navbarToggler && navbarCollapse && navbarCollapse.classList.contains('show')) {
-                    if (!navbarToggler.classList.contains('collapsed')) {
-                         navbarToggler.click();
+                // Fecha o menu hamburguer se estiver expandido em dispositivos móveis
+                if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                    if (navbarToggler) {
+                        navbarToggler.click();
                     }
                 }
-                
-                // Ajuste do scroll para considerar a altura do navbar fixo
-                const navbarHeight = document.querySelector('.navbar.fixed-top')?.offsetHeight || 0;
-                const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
-                const offsetPosition = elementPosition - navbarHeight;
+
+                // Scroll suave levando em conta a altura dinâmica da barra de navegação
+                const navbarHeight = document.querySelector('.navbar.fixed-top')?.offsetHeight || 76;
+                const elementTop = targetElement.getBoundingClientRect().top + window.scrollY;
+                const offsetPosition = elementTop - navbarHeight + 2;
 
                 window.scrollTo({
                     top: offsetPosition,
-                    behavior: "smooth"
+                    behavior: 'smooth'
                 });
-            } else if (targetId === '#') {
-                 e.preventDefault();
-                 window.scrollTo({ top: 0, behavior: 'smooth'});
+
+                // Atualizar o foco para acessibilidade
+                targetElement.setAttribute('tabindex', '-1');
+                targetElement.focus({ preventScroll: true });
             }
         });
     });
 
-    // Atualiza o link ativo no menu ao rolar a página
-    window.addEventListener('scroll', function() {
-        let current = '';
-        const sections = document.querySelectorAll('section[id]');
-        const navbarHeight = document.querySelector('.navbar.fixed-top')?.offsetHeight || 0;
+    // =========================================================================
+    // 3. Scrollspy: Destaque do Link Ativo da Seção Visível
+    // =========================================================================
+    const sections = document.querySelectorAll('section[id]');
+    
+    function atualizarLinkAtivo() {
+        const scrollPosition = window.scrollY + 120;
+        let secaoAtiva = '';
 
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - navbarHeight - 20; // Adiciona um pequeno buffer
-            if (window.scrollY >= sectionTop) {
-                current = section.getAttribute('id');
+            const top = section.offsetTop;
+            const height = section.offsetHeight;
+            if (scrollPosition >= top && scrollPosition < top + height) {
+                secaoAtiva = section.getAttribute('id');
             }
         });
-        
-        // Lógica especial para a primeira seção ou topo da página
-        if (window.scrollY < (document.getElementById(sections[0]?.id)?.offsetTop || 0) - navbarHeight - 20) {
-             current = 'inicio'; // ou o ID da sua primeira seção se for diferente
-        }
 
+        // Caso esteja bem no topo da página
+        if (window.scrollY < 100 && sections.length > 0) {
+            secaoAtiva = sections[0].getAttribute('id');
+        }
 
         navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').substring(1) === current) {
+            const href = link.getAttribute('href');
+            if (href === '#' + secaoAtiva) {
                 link.classList.add('active');
+            } else {
+                link.classList.remove('active');
             }
         });
-         // Se nenhum 'current' for definido (está no topo antes da primeira seção), ativa 'Home'
-        if (!current && navLinks[0] && navLinks[0].getAttribute('href') === '#inicio') {
-            navLinks[0].classList.add('active');
-        }
+    }
+
+    window.addEventListener('scroll', atualizarLinkAtivo, { passive: true });
+    atualizarLinkAtivo();
+
+    // =========================================================================
+    // 4. Controle de Áudio Inteligente (Pausar outras faixas ao reproduzir uma)
+    // =========================================================================
+    const audioPlayers = document.querySelectorAll('audio');
+
+    audioPlayers.forEach(player => {
+        player.addEventListener('play', function () {
+            audioPlayers.forEach(outroPlayer => {
+                if (outroPlayer !== player && !outroPlayer.paused) {
+                    outroPlayer.pause();
+                }
+            });
+        });
     });
 
+    // =========================================================================
+    // 5. Validação e Envio do Formulário de Contato (Offcanvas)
+    // =========================================================================
+    const formContato = document.getElementById('formContato');
+    const formFeedback = document.getElementById('formFeedback');
+
+    if (formContato) {
+        formContato.addEventListener('submit', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (!formContato.checkValidity()) {
+                formContato.classList.add('was-validated');
+                return;
+            }
+
+            // Sanitização básica das entradas
+            const nomeInput = document.getElementById('contactName');
+            const emailInput = document.getElementById('contactEmail');
+            const mensagemInput = document.getElementById('contactMessage');
+
+            const nomeLimpo = nomeInput ? nomeInput.value.trim() : '';
+
+            // Feedback visual seguro via nós DOM (evitando innerHTML de dados de entrada)
+            if (formFeedback) {
+                formFeedback.innerHTML = ''; // Limpa mensagens anteriores
+                
+                const alertDiv = document.createElement('div');
+                alertDiv.className = 'alert alert-success alert-dismissible fade show d-flex align-items-center mt-3';
+                alertDiv.setAttribute('role', 'alert');
+
+                const icon = document.createElement('i');
+                icon.className = 'bi bi-check-circle-fill fs-5 me-2';
+                icon.setAttribute('aria-hidden', 'true');
+
+                const contentSpan = document.createElement('span');
+                contentSpan.innerHTML = `<strong>Mahalo, ${escapeHtml(nomeLimpo)}!</strong> Sua mensagem foi enviada com sucesso com espírito de Ohana! 🌺`;
+
+                const closeBtn = document.createElement('button');
+                closeBtn.type = 'button';
+                closeBtn.className = 'btn-close';
+                closeBtn.setAttribute('data-bs-dismiss', 'alert');
+                closeBtn.setAttribute('aria-label', 'Fechar aviso');
+
+                alertDiv.appendChild(icon);
+                alertDiv.appendChild(contentSpan);
+                alertDiv.appendChild(closeBtn);
+
+                formFeedback.appendChild(alertDiv);
+            }
+
+            // Limpa os campos do formulário
+            formContato.reset();
+            formContato.classList.remove('was-validated');
+        });
+    }
+
+    // Função auxiliar para escapar caracteres especiais e prevenir XSS
+    function escapeHtml(texto) {
+        const div = document.createElement('div');
+        div.textContent = texto;
+        return div.innerHTML;
+    }
+
+    // =========================================================================
+    // 6. Atualização Automática do Ano no Rodapé
+    // =========================================================================
+    const anoAtualElement = document.getElementById('ano-atual');
+    if (anoAtualElement) {
+        anoAtualElement.textContent = new Date().getFullYear();
+    }
 });
